@@ -1,6 +1,6 @@
 # marvin
 *"Every wanted to display rudimentary graphics in the terminal like its 1975? No? Well Now you can!"*
 
-![Opacity](https://imgur.com/8c10x9A " ")
+![Opacity](https://i.imgur.com/cQYMjy1.png " ")
 
-![Multiple Layered Objects](https://imgur.com/cQYMjy1 " ")
+![Multiple Layered Objects](https://i.imgur.com/8c10x9A.png " ")
