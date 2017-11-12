@@ -35,12 +35,17 @@ class Window():
         if self.border == 3: self.border_set = border_set_3
 
     def add(self, objects):
-        for obj in objects:
-            if obj.__class__.__name__ == 'Rect':
-                if obj.x + obj.w >= self.w: print("failed because x is big")
-                if obj.x <= 0: print("failed because x is small")
-                if obj.y + obj.h >= self.w: print("failed because y is big")
-                if obj.y <= 0: print("failed because y is small")
+        # for obj in objects:
+            # print('obj.x:{} obj.y:{}, obj.w:{}, obj.h:{}'.format(obj.x, obj.y, obj.w, obj.h))
+            # if obj.__class__.__name__ == 'Rect':
+            #     if obj.x+obj.w >= self.w-1:
+            #         print("failed because rectangles right edge of {} is bigger than window width of {}-border".format(obj.x+obj.w, self.w))
+            #     if obj.x <= 0:
+            #         print("failed because x is small")
+            #     if obj.y + obj.h >= self.w:
+            #         print("failed because y is big")
+            #     if obj.y < 0:
+            #         print("failed because y is small")
 
             # elif obj.__class__.__name__ == 'Circle':
             #     if obj.x + obj.r >= self.w: print("failed because x is big")
@@ -55,22 +60,25 @@ class Window():
             self.objects.append(obj)
 
     def renpix(self, y, x, char, opac):
-        if(x < 0): print("X value too small")
-        if(x >= self.w): print("X value too Big")
-        if(y < 0): print("Y value too small")
-        if(y >= self.h): print("Y value too Big")
-
-        if self.border != 0:
-            if self.img_buffer[y+1][x+1] != ' ':
-                if char in border_set_1 + border_set_2 + border_set_3:
-                     char = char
-                elif self.img_buffer[y+1][x+1] in border_set_1 + border_set_2 + border_set_3:
-                    char = tone[(2+tone.index(char)) % 11]
-                else:
-                    char = tone[(tone.index(self.img_buffer[y+1][x+1])+tone.index(char)) % 11]
-            self.img_buffer[y+1][x+1] = char
-        else:
-            self.img_buffer[y][x] = char
+        if y < 0 or x < 0:
+            return 0
+        try:
+            if self.border != 0:
+                if self.img_buffer[y+1][x+1] != ' ':
+                    if opac:
+                        if char in border_set_1 + border_set_2 + border_set_3:
+                             char = char
+                        elif self.img_buffer[y+1][x+1] in border_set_1 + border_set_2 + border_set_3:
+                            char = tone[min(2+tone.index(char), 10)]
+                        else:
+                            char = tone[min(tone.index(self.img_buffer[y+1][x+1])+tone.index(char), 10)]
+                    else:
+                        char = char
+                self.img_buffer[y+1][x+1] = char
+            else:
+                self.img_buffer[y][x] = char
+        except:
+            return 0
 
     def render(self):
         if self.clear_first:
