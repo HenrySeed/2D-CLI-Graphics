@@ -34,6 +34,7 @@ class Window():
         if self.border == 2: self.border_set = border_set_2
         if self.border == 3: self.border_set = border_set_3
 
+
     def add(self, objects):
         # for obj in objects:
             # print('obj.x:{} obj.y:{}, obj.w:{}, obj.h:{}'.format(obj.x, obj.y, obj.w, obj.h))
@@ -59,26 +60,31 @@ class Window():
         for obj in objects:
             self.objects.append(obj)
 
+
     def renpix(self, y, x, char, opac):
         if y < 0 or x < 0:
             return 0
         try:
             if self.border != 0:
-                if self.img_buffer[y+1][x+1] != ' ':
-                    if opac:
-                        if char in border_set_1 + border_set_2 + border_set_3:
-                             char = char
-                        elif self.img_buffer[y+1][x+1] in border_set_1 + border_set_2 + border_set_3:
-                            char = tone[min(2+tone.index(char), 10)]
-                        else:
-                            char = tone[min(tone.index(self.img_buffer[y+1][x+1])+tone.index(char), 10)]
-                    else:
-                        char = char
-                self.img_buffer[y+1][x+1] = char
+                offset = 1
             else:
-                self.img_buffer[y][x] = char
+                offset = 0
+
+            if self.img_buffer[y+offset][x+offset] != ' ':
+                if opac:
+                    if char in border_set_1 + border_set_2 + border_set_3:
+                         char = char
+                    elif self.img_buffer[y+offset][x+offset] in border_set_1 + border_set_2 + border_set_3:
+                        char = tone[min(2+tone.index(char), 10)]
+                    else:
+                        char = tone[min(tone.index(self.img_buffer[y+offset][x+offset])+tone.index(char), 10)]
+                else:
+                    char = char
+
+            self.img_buffer[y+offset][x+offset] = char
         except:
             return 0
+
 
     def render(self):
         if self.clear_first:

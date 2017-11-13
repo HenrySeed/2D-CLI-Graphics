@@ -3,19 +3,19 @@ from objects import *
 
 
 
-window = Window(w=20, h=10, fill=0, border=1)
+window = Window(w=98, h=40, fill=0, border=0)
 window.clear_first = True
 
 
-# window.add([Circle(x=5, y=5, r=10, fill=2),
-#             Rect(x=23, y=6, w=20, h=10, fill=5, border=1, opac=False),
-#             Rect(x=60, y=3, w=22, h=9, fill=2, border=2, opac=False),
-#             Rect(x=6, y=22, w=30, h=6, fill=0, border=1),
-#             Rect(x=56, y=14, w=28, h=14, fill=6, border=3),
-#             Text(x=10, y=24, text='Hello World'),
-#             Text(x=10, y=25, text='This is some words'),
-#             Circle(x=49, y=16, r=7, fill=6, opac=True)
-#             ])
+window.add([Circle(x=5, y=5, r=10, fill=2),
+            Rect(x=23, y=6, w=20, h=10, fill=5, border=1, opac=True),
+            Rect(x=60, y=3, w=22, h=9, fill=2, border=2, opac=False),
+            Rect(x=6, y=22, w=30, h=6, fill=0, border=1),
+            Rect(x=56, y=14, w=28, h=14, fill=6, border=3),
+            Text(x=10, y=24, text='Hello World'),
+            Text(x=10, y=25, text='This is some words'),
+            Circle(x=49, y=16, r=7, fill=3, opac=True)
+            ])
 #
 # window.add([Text(5, 3, "ASCII Gradient"),
 #             Rect(0,  10, 5, 5, 0), Text(2, 8, "0"),
@@ -31,8 +31,6 @@ window.clear_first = True
 #             Rect(50, 10, 5, 5, 10), Text(52, 8, "10"),
 #             ])
 
-window.add([Rect(10, 0, 16, 5, fill=4, border=1),
-            Circle(-6, -2, 5, fill=1)])
 
 window.render()
 
