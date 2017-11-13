@@ -1,5 +1,13 @@
 from renderer import *
 
+def sign(a):
+    if a > 0:
+        return 1
+    elif a == 0:
+        return 0
+    else:
+        return -1
+
 class Rect():
     def __init__(self, x, y, w, h, fill=10, border=0, opac=False):
         self.x = x
@@ -68,3 +76,44 @@ class Text():
     def draw(self, w):
         for char in range(0, len(self.text)):
             w.renpix(self.y, self.x+char, self.text[char], 10)
+
+
+class Line():
+    def __init__(self, x0, y0, x1, y1, fill):
+        self.x0 = x0
+        self.x1 = x1
+        self.y0 = y0
+        self.y1 = y1
+        self.fill = fill
+
+    def draw(self, w):
+        deltax = self.x1 - self.x0
+        deltay = self.y1 - self.y0
+
+        if self.x1 != self.x0:
+            deltaerr = abs(deltay / deltax)   # Assume deltax != 0 (line is not vertical),
+
+            error = 0                          # No error at start
+            y = self.y0
+
+            for x in range(self.x0, self.x1):
+                w.renpix(y, x, tone[self.fill], False)
+                error = error + deltaerr
+                while error >= 0.5:
+                    y = y + sign(deltay) * 1
+                    error = error - 1.0
+        else:
+            for row in range(self.y0, self.y1):
+                w.renpix(row, self.x0, tone[self.fill], False)
+
+
+
+
+
+
+
+
+
+
+
+#

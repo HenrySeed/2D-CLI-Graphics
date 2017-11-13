@@ -14,7 +14,8 @@ window.add([Circle(x=5, y=5, r=10, fill=2),
             Rect(x=56, y=14, w=28, h=14, fill=6, border=3),
             Text(x=10, y=24, text='Hello World'),
             Text(x=10, y=25, text='This is some words'),
-            Circle(x=49, y=16, r=7, fill=3, opac=True)
+            Circle(x=49, y=16, r=7, fill=3, opac=True),
+            Line(x0=0, y0=0, x1=10, y1=20, fill=9)
             ])
 #
 # window.add([Text(5, 3, "ASCII Gradient"),
