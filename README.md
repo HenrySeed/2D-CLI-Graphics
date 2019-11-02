@@ -1,4 +1,4 @@
-# Terminal Renderer
+# 2D CLI Graphics 🖼
 *"Every wanted to display rudimentary graphics in the terminal like its 1975? No? Well Now you can!"*
 
 ![Opacity](https://i.imgur.com/cQYMjy1.png " ")
